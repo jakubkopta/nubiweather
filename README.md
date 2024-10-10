@@ -24,20 +24,24 @@ A web application that shows current weather and forecast in 2 cities: Gliwice a
 
 ### Backend Setup
 
-1. Clone the repository:
+1. Navigate to your project directory:
 
    ```bash
-   git clone https://github.com/jakubkopta/nubiweather.git
+   cd nubiweather/spring + kotlin/nubiweather
    ```
 
-2. Navigate to the project directory:
+2. Set the environment variable:
 
    ```bash
-   cd nubiweather/spring + kotlin
+   export WEATHER_API_KEY=your_api_key_here
    ```
 
-3. Open in your IDE.
-4. Run Spring Boot application.
+3. Run the application:
+
+    ```bash
+   ./gradlew bootRun
+   ```
+    
 5. The backend current weather will be available at http://localhost:8080/realtime-weather?city=Gliwice
 6. The backend forecast will be available at http://localhost:8080/forecast-weather?city=Gliwice
 
