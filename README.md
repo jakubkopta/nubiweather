@@ -27,7 +27,7 @@ A web application that shows current weather and forecast in 2 cities: Gliwice a
 1. Navigate to your project directory:
 
    ```bash
-   cd nubiweather/spring + kotlin/nubiweather
+   cd nubiweather/"spring + kotlin"/nubiweather
    ```
 
 2. Set the environment variable:
