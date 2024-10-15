@@ -15,7 +15,7 @@ class NubiweatherService(
     fun getWeatherData(location: String): Mono<WeatherResponse> {
         return webClient.build()
             .get()
-            .uri("https://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$location&days=7&aqi=no&alerts=no")
+            .uri("https://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$location&days=3&aqi=no&alerts=no")
             .retrieve()
             .bodyToMono(WeatherResponse::class.java)
     }

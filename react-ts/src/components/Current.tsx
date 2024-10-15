@@ -1,27 +1,7 @@
 import {useEffect, useState} from "react";
-
-interface Location {
-    name: string;
-    country: string;
-}
-
-interface Condition {
-    text: string;
-}
-
-interface Current {
-    temp_c: number;
-    condition: Condition;
-}
-
-interface WeatherData {
-    location: Location;
-    current: Current;
-}
-
-interface Props {
-    city: string;
-}
+import {Props, WeatherData} from "../models/CurrentModels.tsx";
+import {fetchWeatherData} from "../api/CurrentWeatherApi.tsx";
+import {getIconByDay} from "../utils/WeatherUtils.tsx";
 
 const Current = ({city} : Props) => {
 
@@ -29,19 +9,18 @@ const Current = ({city} : Props) => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchWeather = async () => {
+        const getWeatherData = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/realtime-weather?city=${city}`);
-                const data: WeatherData = await response.json();
+                const data: WeatherData = await fetchWeatherData(city);
                 setWeatherData(data);
             } catch (err) {
                 setError((err as Error).message);
             }
         };
 
-        (async () => {
-            await fetchWeather();
-        })();
+        getWeatherData().catch(err => {
+            setError((err as Error).message);
+        });
     }, [city]);
 
     if (error) {
@@ -52,13 +31,17 @@ const Current = ({city} : Props) => {
         return <div className="text-center">Loading...</div>;
     }
 
-
     return (
-            <div className="bg-cyan-700 text-gray-800 text-center font-bold p-10 rounded-lg shadow-lg">
+        <div className=" bg-cyan-700 text-gray-800 text-center font-bold p-10 rounded-lg shadow-lg">
+            <div>
                 <h1 className="text-xl">{weatherData.location.name}, {weatherData.location.country}</h1>
                 <h2 className="text-7xl lg:text-8xl font-bold">{weatherData.current.temp_c}°C</h2>
-                <h3 className="italic text-2xl font-normal">{weatherData.current.condition.text}</h3>
+                <div className="flex justify-center items-center gap-3">
+                    <img className="grayscale-[30%]" src={getIconByDay(weatherData.current.condition.code)} alt="Weather Icon"/>
+                    <h3 className="italic text-2xl font-normal">{weatherData.current.condition.text}</h3>
+                </div>
             </div>
+        </div>
     )
 }
 
