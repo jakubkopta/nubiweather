@@ -13,7 +13,7 @@ A web application that shows current weather and forecast in 2 cities: Gliwice a
 ## Features
 
 - Show current weather and condition in 2 cities.
-- Show forecast and conditions for next 7 days.
+- Show forecast and conditions for next 3 days.
 
 ## Technologies
 
@@ -21,6 +21,16 @@ A web application that shows current weather and forecast in 2 cities: Gliwice a
 - **Frontend**: TypeScript/React
 
 ## Getting Started
+
+To view the website, simply visit https://jakubkopta-nubiweather.vercel.app.
+
+If you'd like to run the website locally:
+
+Clone this repository:
+
+```bash
+  git clone https://github.com/jakubkopta/nubiweather.git
+```
 
 ### Backend Setup
 
@@ -30,7 +40,7 @@ A web application that shows current weather and forecast in 2 cities: Gliwice a
    cd nubiweather/"spring + kotlin"/nubiweather
    ```
 
-2. Set the environment variable:
+2. Set the environment variable (You can get an API key from: https://www.weatherapi.com/):
 
    ```bash
    export WEATHER_API_KEY=your_api_key_here
