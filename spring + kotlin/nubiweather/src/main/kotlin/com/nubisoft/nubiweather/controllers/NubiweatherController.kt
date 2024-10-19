@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono
 @RestController
 class NubiweatherController(private val weatherService: NubiweatherService) {
 
-    @CrossOrigin(origins = ["http://localhost:5173"])
+    @CrossOrigin(origins = ["http://localhost:5173", "https://jakubkopta-nubiweather.vercel.app"])
     @GetMapping("/realtime-weather")
     fun getWeather(@RequestParam city: String): Mono<CurrentWeather> {
         return weatherService.getWeatherData(city).map {
@@ -22,7 +22,7 @@ class NubiweatherController(private val weatherService: NubiweatherService) {
             ) }
     }
 
-    @CrossOrigin(origins = ["http://localhost:5173"])
+    @CrossOrigin(origins = ["http://localhost:5173", "https://jakubkopta-nubiweather.vercel.app"])
     @GetMapping("/forecast-weather")
     fun getForecast(@RequestParam city: String): Mono<ForecastWeather> {
         return weatherService.getWeatherData(city).map {
