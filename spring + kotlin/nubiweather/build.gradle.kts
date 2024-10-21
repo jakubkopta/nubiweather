@@ -32,6 +32,7 @@ dependencies {
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("com.squareup.okhttp3:mockwebserver:4.10.0")
 }
 
 tasks.withType<KotlinCompile> {
